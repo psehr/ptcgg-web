@@ -14,11 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "cool-dark": "#ee8695",
-        "cool-less-dark": "#333f58",
-        "cool-blue": "#4a7a96",
         "cool-pastel-red": "#eb546a",
-        "cool-pastel-orange": "#fbbbad",
+        "gameboy-light": "#9bbc0f",
       },
     },
   },
