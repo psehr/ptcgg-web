@@ -6,9 +6,11 @@ import NavLogo from "./NavLogo";
 
 const ps2p = Press_Start_2P({ subsets: ["latin"], weight: "400" });
 
+// The navigation bar
+
 export default function Nav() {
   return (
-    <div className="bg-gradient-to-b from-cool-pastel-red to-red-700 w-40 h-full border-8 border-red-700">
+    <div className="h-full bg-gradient-to-b from-cool-pastel-red to-red-700 border-8 border-red-700">
       <div className={ps2p.className}>
         <div className="m-auto h-20">
           <NavLogo></NavLogo>

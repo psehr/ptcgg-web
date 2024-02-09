@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+// The PTC.GG logo in the navbar
+
 export default function NavLogo() {
   return (
     <a href="/">
@@ -11,7 +13,7 @@ export default function NavLogo() {
           height={60}
           className="mx-auto pt-2 h-11"
         />
-        <p className="text-center text-md">PTCGG</p>
+        <p className="text-center text-md">PTC.GG</p>
       </div>
     </a>
   );

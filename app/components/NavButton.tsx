@@ -1,3 +1,5 @@
+// The button for each page in the navbar
+
 export default function NavButton(props: {
   title: string;
   url: string;
