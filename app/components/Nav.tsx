@@ -1,43 +1,45 @@
-"use client";
-
 import { Press_Start_2P } from "next/font/google";
 import NavButton from "./NavButton";
 import NavLogo from "./NavLogo";
+
+import { getServerSession } from "next-auth/next";
 
 const ps2p = Press_Start_2P({ subsets: ["latin"], weight: "400" });
 
 // The navigation bar
 
-export default function Nav() {
+export default async function Nav() {
+  let session = await getServerSession();
+
   return (
     <div className="h-full bg-gradient-to-b from-cool-pastel-red to-red-700 border-8 border-red-700">
       <div className={ps2p.className}>
         <div className="m-auto h-20">
           <NavLogo></NavLogo>
         </div>
-        <div className="mb-10">
-          <NavButton title="Profile" url="profile" hidden={false}></NavButton>
-          <NavButton title="Sign in" url="sign_in" hidden={true}></NavButton>
-          <NavButton title="Sign up" url="sign_up" hidden={true}></NavButton>
-        </div>
-        <div className="m-auto">
-          <NavButton title="Team" url="team" hidden={false}></NavButton>
-          <NavButton
-            title="Inventory"
-            url="inventory"
-            hidden={false}
-          ></NavButton>
-          <NavButton title="Shop" url="shop" hidden={false}></NavButton>
-          <NavButton
-            title="Binder"
-            url="card_binder"
-            hidden={false}
-          ></NavButton>
-        </div>
-        <div className="mt-10">
-          {" "}
-          <NavButton title="Help" url="help" hidden={false}></NavButton>
-        </div>
+        {!session ? (
+          <NavButton title="Log in" url="api/auth/signin"></NavButton>
+        ) : null}
+        {session ? (
+          <div className="mb-10">
+            <NavButton title="Profile" url="profile"></NavButton>
+            <NavButton title="Log out" url="api/auth/signout"></NavButton>
+          </div>
+        ) : null}
+        {session ? (
+          <div className="m-auto">
+            <NavButton title="Team" url="team"></NavButton>
+            <NavButton title="Inventory" url="inventory"></NavButton>
+            <NavButton title="Shop" url="shop"></NavButton>
+            <NavButton title="Binder" url="card_binder"></NavButton>
+          </div>
+        ) : null}
+        {session ? (
+          <div className="mt-10">
+            {" "}
+            <NavButton title="Help" url="help"></NavButton>
+          </div>
+        ) : null}
       </div>
     </div>
   );
